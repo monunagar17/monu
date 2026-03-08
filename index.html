@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Product Hub</title>
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        background: #f4f4f4;
+    }
+
+    header {
+        background: #111;
+        color: white;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    header h1 { margin: 0; font-size: 2.5rem; }
+    header p { margin-top: 10px; color: #ccc; }
+
+    .search-container {
+        text-align: center;
+        margin: 30px 0;
+    }
+
+    .search input {
+        width: 100%;
+        max-width: 500px;
+        padding: 15px;
+        font-size: 16px;
+        border-radius: 30px;
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        outline: none;
+        transition: 0.3s;
+    }
+
+    .search input:focus {
+        border-color: #ff9900;
+        box-shadow: 0 4px 10px rgba(255, 153, 0, 0.2);
+    }
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 25px;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .card {
+        background: white;
+        /* Changed from fixed width to flexible width */
+        min-width: 280px; 
+        max-width: 350px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover; /* Ensures image doesn't stretch weirdly */
+        background-color: #eee;
+    }
+
+    .card-body {
+        padding: 20px;
+        text-align: center;
+        flex-grow: 1; /* Pushes button to bottom */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .card-body h3 {
+        margin: 0 0 10px 0;
+        color: #333;
+    }
+
+    .card-body p {
+        font-size: 14px;
+        color: #666;
+        line-height: 1.5;
+    }
+
+    /* Changed button to be a styled link */
+    .btn {
+        display: inline-block;
+        background: #ff9900;
+        color: white;
+        text-decoration: none;
+        padding: 12px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 5px;
+        margin-top: 15px;
+        transition: background 0.3s;
+    }
+
+    .btn:hover {
+        background: #e68a00;
+    }
+
+    footer {
+        background: #111;
+        color: #888;
+        text-align: center;
+        padding: 20px;
+        margin-top: 50px;
+        font-size: 14px;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Smart Product Hub</h1>
+    <p>Curated Tech Deals & Reviews</p>
+</header>
+
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search for products (e.g., Watch, Mouse)...">
+</div>
+
+<div class="container">
+
+    <!-- Product 1 -->
+    <div class="card">
+        <!-- Using a real image placeholder for better look -->
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&auto=format&fit=crop&q=60" alt="Headphones">
+        <div class="card-body">
+            <h3>Wireless Earbuds</h3>
+            <p>High quality sound with active noise cancellation and 24h battery life.</p>
+            <a href="#" class="btn">View on Amazon</a>
+        </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&auto=format&fit=crop&q=60" alt="Smart Watch">
+        <div class="card-body">
+            <h3>Smart Watch</h3>
+            <p>Advanced fitness tracking, heart rate monitor, and waterproof design.</p>
+            <a href="#" class="btn">View on Amazon</a>
+        </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&auto=format&fit=crop&q=60" alt="Gaming Mouse">
+        <div class="card-body">
+            <h3>Gaming Mouse</h3>
+            <p>RGB lighting, 16000 DPI sensor, and programmable buttons for pros.</p>
+            <a href="#" class="btn">View on Amazon</a>
+        </div>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&auto=format&fit=crop&q=60" alt="Laptop">
+        <div class="card-body">
+            <h3>Ultrabook Laptop</h3>
+            <p>Lightweight, powerful processor, and 14-hour battery life for work.</p>
+            <a href="#" class="btn">View on Amazon</a>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 Smart Product Hub | <a href="#" style="color:#888;">Privacy Policy</a></p>
+    <p style="font-size: 12px; margin-top:5px;">Affiliate Disclosure: We earn from qualifying purchases.</p>
+</footer>
+
+<script>
+    // Simple JavaScript to filter products
+    const searchInput = document.getElementById('searchInput');
+    const cards = document.querySelectorAll('.card');
+
+    searchInput.addEventListener('keyup', function(e) {
+        const term = e.target.value.toLowerCase();
+
+        cards.forEach(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            const desc = card.querySelector('p').textContent.toLowerCase();
+
+            if (title.includes(term) || desc.includes(term)) {
+                card.style.display = 'flex'; // Show card
+            } else {
+                card.style.display = 'none'; // Hide card
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
